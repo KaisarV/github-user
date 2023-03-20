@@ -1,4 +1,4 @@
-package com.kai.githubuser
+package com.kai.githubuser.retrofit
 
 import com.kai.githubuser.response.UserResponse
 import retrofit2.Call

@@ -1,4 +1,4 @@
-package com.kai.githubuser
+package com.kai.githubuser.retrofit
 
 import androidx.viewbinding.BuildConfig
 import okhttp3.OkHttpClient
