@@ -44,11 +44,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-    private fun setUserData(consumerReviews: List<ItemsItem>) {
+    private fun setUserData(users: List<ItemsItem>) {
         val listUser = ArrayList<ItemsItem>()
-        for (user in consumerReviews) {
+        for (user in users) {
             listUser.add(
                 user
             )
@@ -64,13 +62,15 @@ class MainActivity : AppCompatActivity() {
         binding.edSearch.setText("")
     }
 
-    private fun showLoading(isLoading: Boolean) {
+
+   private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
         }
     }
+
 
     private fun moveProfile(user: ItemsItem?) {
         val moveWithObjectIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
