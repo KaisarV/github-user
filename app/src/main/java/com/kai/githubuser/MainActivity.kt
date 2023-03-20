@@ -1,5 +1,6 @@
 package com.kai.githubuser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         val listUserAdapter = UserAdapter(listUser)
         listUserAdapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ItemsItem) {
-                showSelectedUser(data)
+                moveProfile(data)
             }
         })
         binding.rvUser.adapter = listUserAdapter
@@ -71,7 +72,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSelectedUser(user: ItemsItem) {
-        Toast.makeText(this, "Kamu memilih " + user.login, Toast.LENGTH_SHORT).show()
+    private fun moveProfile(user: ItemsItem?) {
+        val moveWithObjectIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
+        moveWithObjectIntent.putExtra(DetailUserActivity.LOGIN, user?.login)
+        startActivity(moveWithObjectIntent)
     }
 }

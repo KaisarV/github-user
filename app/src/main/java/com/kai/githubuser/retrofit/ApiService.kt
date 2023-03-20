@@ -9,4 +9,9 @@ interface ApiService {
     fun getUsers(
         @Query("q") name: String
     ):  Call<UserResponse>
+
+    @GET("users/{login}")
+    fun getDetailUser(
+        @Path("login") login: String
+    ): Call<UserResponse>
 }
