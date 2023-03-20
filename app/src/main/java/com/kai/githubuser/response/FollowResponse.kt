@@ -2,13 +2,13 @@ package com.kai.githubuser.response
 
 import com.google.gson.annotations.SerializedName
 
-data class FollowerFollowingResponse(
+data class FollowResponse(
 
 	@field:SerializedName("FollowerFollowingResponse")
-	val followerFollowingResponse: List<FollowerFollowingResponseItem>
+	val followerFollowingResponse: List<FollowResponseItem>
 )
 
-data class FollowerFollowingResponseItem(
+data class FollowResponseItem(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String,

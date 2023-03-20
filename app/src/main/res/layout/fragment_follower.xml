@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FollowerFollowingFragment">
+    tools:context=".FollowFragment">
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="AAAAAAAAAAAAAAAAA"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -19,7 +25,7 @@
         tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUser"
+        android:id="@+id/rvUser2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

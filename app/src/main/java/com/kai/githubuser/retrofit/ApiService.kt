@@ -1,8 +1,6 @@
 package com.kai.githubuser.retrofit
 
-import com.kai.githubuser.response.FollowerFollowingResponse
-import com.kai.githubuser.response.UserDetailResponse
-import com.kai.githubuser.response.UserResponse
+import com.kai.githubuser.response.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -20,12 +18,12 @@ interface ApiService {
     @GET("users/{username}/followers")
     fun getFollowers(
         @Path("username") username: String
-    ): Call<FollowerFollowingResponse>
+    ): Call<List<FollowResponseItem>>
 
-    @GET("users/{username}/following")
-    fun getFollowing(
-        @Path("username") username: String
-    ): Call<FollowerFollowingResponse>
+//    @GET("users/{username}/following")
+//    fun getFollowing(
+//        @Path("username") username: String
+//    ): Call<FollowerFollowingResponse>
 
 
 

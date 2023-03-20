@@ -25,9 +25,7 @@ class DetailUserActivity : AppCompatActivity() {
             R.string.tab_text_1,
             R.string.tab_text_2
         )
-
         const val LOGIN = "login"
-
     }
 
     private lateinit var binding: ActivityDetailUserBinding

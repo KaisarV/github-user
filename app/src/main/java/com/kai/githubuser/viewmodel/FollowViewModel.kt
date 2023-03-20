@@ -4,53 +4,54 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kai.githubuser.response.ItemsItem
-import com.kai.githubuser.response.UserResponse
+import com.kai.githubuser.response.*
 import com.kai.githubuser.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class FollowViewModel: ViewModel() {
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _listUser = MutableLiveData<List<ItemsItem>>()
-    val listUser: LiveData<List<ItemsItem>> = _listUser
+    private val _listFollower = MutableLiveData<List<FollowResponseItem>>()
+    val listFollower: LiveData<List<FollowResponseItem>> = _listFollower
 
     companion object{
-        const val TAG = "MainViewModel"
-        private const val USERNAME = "ARIF"
+        const val TAG = "FollowerViewModel2"
     }
 
     init {
-        getUser()
+        getFollower()
     }
 
-    fun getUser(username :String = USERNAME) {
+    private fun getFollower() {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getUsers(username)
-        client.enqueue(object : Callback<UserResponse> {
+        val client = ApiConfig.getApiService().getFollowers("sidiqpermana")
+        client.enqueue(object : Callback<List<FollowResponseItem>> {
             override fun onResponse(
-                call: Call<UserResponse>,
-                response: Response<UserResponse>
+                call: Call<List<FollowResponseItem>>,
+                response: Response<List<FollowResponseItem>>
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        _listUser.value = response.body()?.items
+                        _listFollower.value = response.body()
+                        for(a in _listFollower.value!!){
+                            Log.d("CEKK", a.login)
+                        }
                     }
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<FollowResponseItem>>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message}")
+                Log.e(TAG, "onFailure2: ${t.message}")
             }
         })
     }
-
 
 }

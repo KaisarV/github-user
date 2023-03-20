@@ -20,7 +20,6 @@ class DetailUserViewModel : ViewModel() {
     private val _detailUser = MutableLiveData<UserDetailResponse>()
     val detailUser: LiveData<UserDetailResponse> = _detailUser
 
-
     fun getDetailUser(login_name: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getDetailUser(login_name)

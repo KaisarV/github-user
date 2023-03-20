@@ -17,7 +17,7 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/img_item_photo"
+            android:id="@+id/img_item_photo2"
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
@@ -27,30 +27,30 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/name2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
-            android:layout_toEndOf="@id/img_item_photo"
+            android:layout_toEndOf="@id/img_item_photo2"
             android:textSize="20sp"
             android:textStyle="bold"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
-            card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
+            card_view:layout_constraintStart_toEndOf="@+id/img_item_photo2"
+            card_view:layout_constraintTop_toTopOf="@+id/img_item_photo2"
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/url_item"
+            android:id="@+id/url_item2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
-            card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
-            card_view:layout_constraintEnd_toEndOf="@+id/name"
-            card_view:layout_constraintStart_toStartOf="@+id/name"
-            card_view:layout_constraintTop_toBottomOf="@+id/name"
+            card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo2"
+            card_view:layout_constraintEnd_toEndOf="@+id/name2"
+            card_view:layout_constraintStart_toStartOf="@+id/name2"
+            card_view:layout_constraintTop_toBottomOf="@+id/name2"
             card_view:layout_constraintVertical_bias="0.0"
             tools:text="@string/url" />
 
