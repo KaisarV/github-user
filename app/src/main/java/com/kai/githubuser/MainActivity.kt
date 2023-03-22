@@ -30,13 +30,10 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvUser.layoutManager = layoutManager
 
-
-
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
         }
         mainViewModel.listUser.observe(this) { users ->
-
             setUserData(users)
         }
 
