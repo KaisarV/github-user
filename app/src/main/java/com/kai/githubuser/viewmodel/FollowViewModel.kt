@@ -27,7 +27,7 @@ class FollowViewModel: ViewModel() {
 
     fun getFollower(login: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getFollower(login, "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")
+        val client = ApiConfig.getApiService().getFollower(login, "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")
         client.enqueue(object : Callback<List<FollowResponseItem>> {
             override fun onResponse(
                 call: Call<List<FollowResponseItem>>,
@@ -52,7 +52,7 @@ class FollowViewModel: ViewModel() {
 
     fun getFollowing(login:String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getFollowing(login, "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")
+        val client = ApiConfig.getApiService().getFollowing(login, "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")
         client.enqueue(object : Callback<List<FollowResponseItem>> {
             override fun onResponse(
                 call: Call<List<FollowResponseItem>>,

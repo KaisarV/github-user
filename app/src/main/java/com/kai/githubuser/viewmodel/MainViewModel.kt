@@ -29,7 +29,7 @@ class MainViewModel : ViewModel() {
 
     fun getUser(username :String = USERNAME) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getUsers(username, "\"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")
+        val client = ApiConfig.getApiService().getUsers(username, "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")
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
                 call: Call<UserResponse>,

@@ -20,7 +20,7 @@ class DetailUserViewModel : ViewModel() {
 
     fun getDetailUser(login_name: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getDetailUser(login_name, "\"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")
+        val client = ApiConfig.getApiService().getDetailUser(login_name, "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")
         client.enqueue(object : Callback<UserDetailResponse> {
             override fun onResponse(
                 call: Call<UserDetailResponse>,
