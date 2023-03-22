@@ -29,7 +29,7 @@ data class ItemsItem(
 	val starredUrl: String,
 
 	@field:SerializedName("login")
-	val login: String,
+    var login: String,
 
 	@field:SerializedName("followers_url")
 	val followersUrl: String,

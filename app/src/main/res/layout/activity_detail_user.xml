@@ -54,9 +54,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <TextView
+        android:id="@+id/public_repos"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/public_repos"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf ="@id/login_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="410dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -68,11 +80,14 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:tabTextColor="@android:color/white"
+            app:tabBackground="@drawable/tab_color_selector"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             />
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

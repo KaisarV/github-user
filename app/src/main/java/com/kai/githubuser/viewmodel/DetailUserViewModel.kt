@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kai.githubuser.response.ItemsItem
 import com.kai.githubuser.response.UserDetailResponse
-import com.kai.githubuser.response.UserResponse
 import com.kai.githubuser.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +20,7 @@ class DetailUserViewModel : ViewModel() {
 
     fun getDetailUser(login_name: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getDetailUser(login_name)
+        val client = ApiConfig.getApiService().getDetailUser(login_name, "\"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")
         client.enqueue(object : Callback<UserDetailResponse> {
             override fun onResponse(
                 call: Call<UserDetailResponse>,

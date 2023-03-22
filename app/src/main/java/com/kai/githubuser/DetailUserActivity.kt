@@ -1,22 +1,18 @@
 package com.kai.githubuser
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kai.githubuser.adapter.SectionsPagerAdapter
-import com.kai.githubuser.adapter.UserAdapter
 import com.kai.githubuser.databinding.ActivityDetailUserBinding
-import com.kai.githubuser.databinding.ActivityMainBinding
-import com.kai.githubuser.response.ItemsItem
 import com.kai.githubuser.response.UserDetailResponse
 import com.kai.githubuser.viewmodel.DetailUserViewModel
-import com.kai.githubuser.viewmodel.MainViewModel
 
 class DetailUserActivity : AppCompatActivity() {
     companion object {
@@ -25,34 +21,20 @@ class DetailUserActivity : AppCompatActivity() {
             R.string.tab_text_1,
             R.string.tab_text_2
         )
+
+
         const val LOGIN = "login"
     }
 
     private lateinit var binding: ActivityDetailUserBinding
-
-
+    private val detailUserViewModel: DetailUserViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this)
-        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
-        supportActionBar?.elevation = 0f
-
         val login = intent.getStringExtra(LOGIN)
-//        binding.loginName.text = login
 
-
-        val detailUserViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[DetailUserViewModel::class.java]
 
         if (login != null) {
             detailUserViewModel.getDetailUser(login)
@@ -67,11 +49,27 @@ class DetailUserActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setUserData(userDetail: UserDetailResponse) {
         binding.loginName.text = userDetail.login
         binding.name.text = userDetail.name
+        binding.publicRepos.text = userDetail.publicRepos.toString() + " Public Repos"
+
+        val follow = arrayOf(
+            userDetail.followers.toString(),
+            userDetail.following.toString()
+        )
+
+        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = follow[position]+" " + resources.getString(TAB_TITLES[position])
+        }.attach()
+
         Glide.with(this)
-            .load(userDetail.avatarUrl) // URL Gambar
+            .load(userDetail.avatarUrl)
             .into(binding.profile)
     }
 

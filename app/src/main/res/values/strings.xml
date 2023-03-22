@@ -5,7 +5,6 @@
     <string name="title_activity_detail_user">DetailUser</string>
     <string name="tab_text_1">Follower</string>
     <string name="tab_text_2">Following</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="follower">Follower</string>
     <string name="following">Following</string>
@@ -13,4 +12,7 @@
     <string name="login_name">login name</string>
     <string name="content_tab_text">This is Tab %1$d</string>
     <string name="search">Search</string>
+    <string name="public_repos">Public Repos</string>
+    <string name="search_hint">Insert github username</string>
+    <string name="exit">Exit</string>
 </resources>
