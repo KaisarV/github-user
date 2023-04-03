@@ -15,7 +15,7 @@ class FollowAdapter(private val listFollow: List<FollowResponseItem>) : Recycler
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =
-        ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.follow_list ,viewGroup, false))
+        ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.user_list ,viewGroup, false))
 
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -36,9 +36,9 @@ class FollowAdapter(private val listFollow: List<FollowResponseItem>) : Recycler
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvItem2: TextView = view.findViewById(R.id.name2)
-        val url2: TextView = view.findViewById(R.id.url_item2)
-        val img2 :ImageView = view.findViewById(R.id.img_item_photo2)
+        val tvItem2: TextView = view.findViewById(R.id.name)
+        val url2: TextView = view.findViewById(R.id.url_item)
+        val img2 :ImageView = view.findViewById(R.id.img_item_photo)
     }
 
     interface OnItemClickCallback {

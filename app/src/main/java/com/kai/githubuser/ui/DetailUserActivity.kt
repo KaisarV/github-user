@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -12,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kai.githubuser.R
 import com.kai.githubuser.adapter.SectionsPagerAdapter
+import com.kai.githubuser.database.FavoriteUser
 import com.kai.githubuser.databinding.ActivityDetailUserBinding
 import com.kai.githubuser.helper.ViewModelFactory
 import com.kai.githubuser.response.UserDetailResponse
@@ -51,6 +53,14 @@ class DetailUserActivity : AppCompatActivity() {
 
         detailUserViewModel.detailUser.observe(this) { details->
             setUserData(details)
+
+            binding.addFav.setOnClickListener{
+                val favUser =
+                    details.login?.let { it1 -> FavoriteUser(it1, details.avatarUrl, details.url) }
+                if (favUser != null) {
+                    detailUserViewModel.insert(favUser)
+                }
+            }
         }
     }
 

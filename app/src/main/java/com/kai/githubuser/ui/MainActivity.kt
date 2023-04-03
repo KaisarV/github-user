@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         val moveWithObjectIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
 
         moveWithObjectIntent.putExtra(DetailUserActivity.LOGIN, user_login)
-        moveWithObjectIntent.putExtra(FollowFragment.LOGIN, user_login)
+
         startActivity(moveWithObjectIntent)
     }
 }
