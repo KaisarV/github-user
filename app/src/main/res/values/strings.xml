@@ -15,4 +15,5 @@
     <string name="public_repos">Public Repos</string>
     <string name="search_hint">Insert github username</string>
     <string name="exit">Exit</string>
+    <string name="favorite" />
 </resources>

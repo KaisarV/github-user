@@ -1,4 +1,4 @@
-package com.kai.githubuser
+package com.kai.githubuser.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -84,7 +84,6 @@ class FollowFragment : Fragment() {
 
         binding!!.rvUser2.adapter = listFollowerAdapter
     }
-
 
     fun moveDetailUser(user_login: String) {
         val moveWithObjectIntent = Intent(activity, DetailUserActivity::class.java)

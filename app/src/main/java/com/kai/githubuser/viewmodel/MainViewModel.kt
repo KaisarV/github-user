@@ -1,9 +1,12 @@
 package com.kai.githubuser.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kai.githubuser.repository.FavoriteUserRepository
+import com.kai.githubuser.repository.GithubAPIRepository
 import com.kai.githubuser.response.ItemsItem
 import com.kai.githubuser.response.UserResponse
 import com.kai.githubuser.retrofit.ApiConfig
@@ -11,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -23,13 +26,15 @@ class MainViewModel : ViewModel() {
         private const val USERNAME = "ARIF"
     }
 
+    private val mGithubAPIRepository: GithubAPIRepository = GithubAPIRepository(application)
+
     init {
         getUser()
     }
 
     fun getUser(username :String = USERNAME) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getUsers(username, "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")
+        val client = mGithubAPIRepository.getUser(username)
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
                 call: Call<UserResponse>,

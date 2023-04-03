@@ -1,16 +1,19 @@
 package com.kai.githubuser.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kai.githubuser.database.FavoriteUser
+import com.kai.githubuser.repository.FavoriteUserRepository
 import com.kai.githubuser.response.UserDetailResponse
 import com.kai.githubuser.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailUserViewModel : ViewModel() {
+class DetailUserViewModel(application: Application) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -44,4 +47,14 @@ class DetailUserViewModel : ViewModel() {
 
         })
     }
+
+    private val mFavoriteUserRepository: FavoriteUserRepository = FavoriteUserRepository(application)
+    fun insert(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.insert(favoriteUser)
+    }
+
+    fun delete(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.delete(favoriteUser)
+    }
 }
+

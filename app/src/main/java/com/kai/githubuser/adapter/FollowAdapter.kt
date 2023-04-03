@@ -14,8 +14,6 @@ import com.kai.githubuser.response.FollowResponseItem
 class FollowAdapter(private val listFollow: List<FollowResponseItem>) : RecyclerView.Adapter<FollowAdapter.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.follow_list ,viewGroup, false))
 
