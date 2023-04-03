@@ -31,6 +31,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         adapter = FavoriteUserAdapter()
+
         binding?.rvUser?.layoutManager = LinearLayoutManager(this)
         binding?.rvUser?.setHasFixedSize(true)
         binding?.rvUser?.adapter = adapter

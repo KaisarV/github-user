@@ -1,5 +1,6 @@
 package com.kai.githubuser.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.kai.githubuser.database.FavoriteUser
 import com.kai.githubuser.databinding.UserListBinding
 import com.kai.githubuser.helper.FavoriteUserDiffCallback
+import com.kai.githubuser.ui.DetailUserActivity
 
 class FavoriteUserAdapter : RecyclerView.Adapter<FavoriteUserAdapter.FavoriteUserViewHolder>() {
     private val listFavoriteUser = ArrayList<FavoriteUser>()
@@ -40,13 +42,14 @@ class FavoriteUserAdapter : RecyclerView.Adapter<FavoriteUserAdapter.FavoriteUse
 
                 val context = itemView.context
                 Glide.with(context)
-                    .load(favoriteUser.avatarUrl) // URL Gambar
+                    .load(favoriteUser.avatarUrl)
                     .into(imgItemPhoto)
-//                cvItemNote.setOnClickListener {
-//                    val intent = Intent(it.context, NoteAddUpdateActivity::class.java)
-//                    intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, note)
-//                    it.context.startActivity(intent)
-//                }
+
+                cvItemUser.setOnClickListener {
+                    val intent = Intent(it.context, DetailUserActivity::class.java)
+                    intent.putExtra(DetailUserActivity.LOGIN, name.text)
+                    it.context.startActivity(intent)
+                }
             }
         }
     }
