@@ -17,6 +17,7 @@ import com.kai.githubuser.R
 import com.kai.githubuser.adapter.UserAdapter
 import com.kai.githubuser.databinding.ActivityMainBinding
 import com.kai.githubuser.helper.ViewModelFactory
+import com.kai.githubuser.repository.FavoriteUserRepository
 import com.kai.githubuser.response.ItemsItem
 import com.kai.githubuser.viewmodel.FavoriteUserViewModel
 import com.kai.githubuser.viewmodel.MainViewModel
@@ -72,13 +73,17 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
-
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu1 -> {
+                val moveIntent = Intent(this@MainActivity,
+                    SettingActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.menu2 -> {
                 finishAffinity()
             }
             R.id.favorite -> {
@@ -108,7 +113,6 @@ class MainActivity : AppCompatActivity() {
         binding.edSearch.setText("")
     }
 
-
    private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
@@ -118,8 +122,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveDetailUser(user_login: String) {
-        val moveWithObjectIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
 
+        val moveWithObjectIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
         moveWithObjectIntent.putExtra(DetailUserActivity.LOGIN, user_login)
 
         startActivity(moveWithObjectIntent)

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -18,7 +16,6 @@ import com.kai.githubuser.databinding.ActivityDetailUserBinding
 import com.kai.githubuser.helper.ViewModelFactory
 import com.kai.githubuser.response.UserDetailResponse
 import com.kai.githubuser.viewmodel.DetailUserViewModel
-import com.kai.githubuser.viewmodel.FavoriteUserViewModel
 
 class DetailUserActivity : AppCompatActivity() {
     companion object {
@@ -33,7 +30,6 @@ class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
@@ -45,20 +41,30 @@ class DetailUserActivity : AppCompatActivity() {
 
         if (login != null) {
             detailUserViewModel.getDetailUser(login)
+            detailUserViewModel.count(login)
         }
 
         detailUserViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        detailUserViewModel.detailUser.observe(this) { details->
-            setUserData(details)
+        detailUserViewModel.count(login!!).observe(this){ count ->
+            if(count == 0){
+                binding.addFav.setImageResource(R.drawable.ic_baseline_favorite_border_24)
 
-            binding.addFav.setOnClickListener{
-                val favUser =
-                    details.login?.let { it1 -> FavoriteUser(it1, details.avatarUrl, details.url) }
-                if (favUser != null) {
-                    detailUserViewModel.insert(favUser)
+            }else {
+                binding.addFav.setImageResource(R.drawable.ic_baseline_favorite_24)
+            }
+            detailUserViewModel.detailUser.observe(this) { details->
+                setUserData(details)
+                binding.addFav.setOnClickListener{
+                    val favUser =
+                        details.login?.let { it1 -> FavoriteUser(it1, details.avatarUrl, details.url) }
+                    if (favUser != null && count == 0 ) {
+                        detailUserViewModel.insert(favUser)
+                    }else {
+                        detailUserViewModel.delete(favUser!!)
+                    }
                 }
             }
         }

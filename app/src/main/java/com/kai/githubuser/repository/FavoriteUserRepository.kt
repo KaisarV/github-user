@@ -21,6 +21,11 @@ class FavoriteUserRepository(application: Application) {
     fun insert(favoriteUser : FavoriteUser) {
         executorService.execute { mFavoriteUserDao.insert(favoriteUser) }
     }
+
+    fun count(username: String): LiveData<Int> =
+        mFavoriteUserDao.count(username)
+
+
     fun delete(favoriteUser : FavoriteUser) {
         executorService.execute { mFavoriteUserDao.delete(favoriteUser) }
     }

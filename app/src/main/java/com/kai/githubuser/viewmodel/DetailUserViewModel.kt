@@ -21,6 +21,7 @@ class DetailUserViewModel(application: Application) : ViewModel() {
     private val _detailUser = MutableLiveData<UserDetailResponse>()
     val detailUser: LiveData<UserDetailResponse> = _detailUser
 
+
     fun getDetailUser(login_name: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getDetailUser(login_name, "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")
@@ -49,6 +50,9 @@ class DetailUserViewModel(application: Application) : ViewModel() {
     }
 
     private val mFavoriteUserRepository: FavoriteUserRepository = FavoriteUserRepository(application)
+
+    fun count(login_name: String): LiveData<Int> = mFavoriteUserRepository.count(login_name)
+
     fun insert(favoriteUser: FavoriteUser) {
         mFavoriteUserRepository.insert(favoriteUser)
     }

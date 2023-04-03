@@ -16,4 +16,5 @@
     <string name="search_hint">Insert github username</string>
     <string name="exit">Exit</string>
     <string name="favorite" />
+    <string name="dark_mode">Dark Mode</string>
 </resources>

@@ -28,9 +28,13 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val mGithubAPIRepository: GithubAPIRepository = GithubAPIRepository(application)
 
+
+
     init {
         getUser()
     }
+
+
 
     fun getUser(username :String = USERNAME) {
         _isLoading.value = true
@@ -56,6 +60,5 @@ class MainViewModel(application: Application) : ViewModel() {
             }
         })
     }
-
 
 }

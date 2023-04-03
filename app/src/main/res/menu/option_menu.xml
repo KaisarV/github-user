@@ -13,8 +13,9 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
     <group android:menuCategory="container">
-
         <item android:id="@+id/menu1"
+            android:title="Setting" />
+        <item android:id="@+id/menu2"
             android:title="@string/exit" />
     </group>
 </menu>
