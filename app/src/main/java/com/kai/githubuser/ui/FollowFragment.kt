@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kai.githubuser.adapter.FollowAdapter
 import com.kai.githubuser.databinding.FragmentFollowerBinding
+import com.kai.githubuser.helper.ViewModelFactory
 import com.kai.githubuser.response.FollowResponseItem
 import com.kai.githubuser.viewmodel.FollowViewModel
 
@@ -63,6 +65,7 @@ class FollowFragment : Fragment() {
             }
         }
     }
+
 
     private fun setFollow(users: List<FollowResponseItem>) {
         val listFollowers = ArrayList<FollowResponseItem>()

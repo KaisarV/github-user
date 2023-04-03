@@ -82,7 +82,9 @@ class MainActivity : AppCompatActivity() {
                 finishAffinity()
             }
             R.id.favorite -> {
-                Toast.makeText(this, "Ke menu fav", Toast.LENGTH_SHORT).show()
+                val moveIntent = Intent(this@MainActivity,
+                    FavoriteActivity::class.java)
+                startActivity(moveIntent)
             }
         }
         return super.onOptionsItemSelected(item)

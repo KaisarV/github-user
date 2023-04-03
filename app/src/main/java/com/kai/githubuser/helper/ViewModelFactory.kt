@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kai.githubuser.viewmodel.DetailUserViewModel
 import com.kai.githubuser.viewmodel.FavoriteUserViewModel
+import com.kai.githubuser.viewmodel.FollowViewModel
 import com.kai.githubuser.viewmodel.MainViewModel
 
 class ViewModelFactory private constructor(private val mApplication: Application) : ViewModelProvider.NewInstanceFactory() {
@@ -31,7 +32,6 @@ class ViewModelFactory private constructor(private val mApplication: Application
         } else if (modelClass.isAssignableFrom(FavoriteUserViewModel::class.java)) {
             return FavoriteUserViewModel(mApplication) as T
         }
-
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
 }
