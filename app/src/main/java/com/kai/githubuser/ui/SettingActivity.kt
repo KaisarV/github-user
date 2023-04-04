@@ -12,16 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.kai.githubuser.R
 import com.kai.githubuser.SettingPreferences
-import com.kai.githubuser.databinding.ActivityMainBinding
 import com.kai.githubuser.databinding.ActivitySettingBinding
 import com.kai.githubuser.helper.SettingViewModelFactory
-import com.kai.githubuser.helper.ViewModelFactory
 import com.kai.githubuser.viewmodel.SettingViewModel
 
 class SettingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingBinding
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
@@ -30,9 +29,7 @@ class SettingActivity : AppCompatActivity() {
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
         val pref = SettingPreferences.getInstance(dataStore)
-        val mainViewModel = ViewModelProvider(this, SettingViewModelFactory(pref)).get(
-            SettingViewModel::class.java
-        )
+        val mainViewModel = ViewModelProvider(this, SettingViewModelFactory(pref))[SettingViewModel::class.java]
         mainViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

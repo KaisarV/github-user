@@ -9,23 +9,25 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kai.githubuser.R
 import com.kai.githubuser.adapter.UserAdapter
 import com.kai.githubuser.databinding.ActivityMainBinding
 import com.kai.githubuser.helper.ViewModelFactory
-import com.kai.githubuser.repository.FavoriteUserRepository
 import com.kai.githubuser.response.ItemsItem
-import com.kai.githubuser.viewmodel.FavoriteUserViewModel
 import com.kai.githubuser.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel?= null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProvider(activity, factory).get(MainViewModel::class.java)
+        return ViewModelProvider(activity, factory)[MainViewModel::class.java]
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

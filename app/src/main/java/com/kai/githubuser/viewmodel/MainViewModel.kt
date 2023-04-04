@@ -5,11 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kai.githubuser.repository.FavoriteUserRepository
 import com.kai.githubuser.repository.GithubAPIRepository
 import com.kai.githubuser.response.ItemsItem
 import com.kai.githubuser.response.UserResponse
-import com.kai.githubuser.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,13 +26,9 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val mGithubAPIRepository: GithubAPIRepository = GithubAPIRepository(application)
 
-
-
     init {
         getUser()
     }
-
-
 
     fun getUser(username :String = USERNAME) {
         _isLoading.value = true

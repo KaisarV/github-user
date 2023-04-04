@@ -1,16 +1,11 @@
 package com.kai.githubuser.repository
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import com.kai.githubuser.database.FavoriteUser
 import com.kai.githubuser.database.FavoriteUserDao
 import com.kai.githubuser.database.FavoriteUserRoomDatabase
-import com.kai.githubuser.response.FollowResponseItem
 import com.kai.githubuser.response.UserResponse
 import com.kai.githubuser.retrofit.ApiConfig
 import retrofit2.Call
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 class GithubAPIRepository(application: Application) {
     private val mFavoriteUserDao: FavoriteUserDao

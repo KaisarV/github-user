@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kai.githubuser.R
 import com.kai.githubuser.adapter.FavoriteUserAdapter
 import com.kai.githubuser.databinding.ActivityFavoriteBinding
 import com.kai.githubuser.helper.ViewModelFactory
